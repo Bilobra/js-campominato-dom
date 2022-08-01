@@ -7,6 +7,7 @@
 .row{
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
 
 }
 
@@ -22,7 +23,7 @@ body {
 /* header */
 header {
     background-color: white;
-    padding: 20px 0;
+    padding: 20px;
 }
 
 button {
@@ -35,6 +36,10 @@ button {
     min-width: 80px;
     line-height: 30px;
     text-align: center;
+    height: 30px;
+}
+.main-header select{
+    height: 20px;
 }
 
 /* main */

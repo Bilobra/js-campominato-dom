@@ -17,7 +17,7 @@ playButtonElement.addEventListener('click', startGame)
 
 // -----------------
 // creo un ARRAY VUOTO da utilizzare per generare le mie 'bombe'
-let bombePosition = [];
+let posizioneBombe = [];
 
 // FUNZIONI
 // -------------------------------------------
@@ -89,8 +89,8 @@ function startGame() {
     // dopo che ho calcolato la dimensione della mia griglia con la funzione
     // genero bombe e la loro posizione
 
-    bombePosition = generaBombe(dimensione ** 2);
-    console.log(bombePosition);
+    posizioneBombe = generaBombe(dimensione ** 2);
+    console.log(posizioneBombe);
 
     // creo la griglia in base alla dimensione calcolata dalla select 
     creaGriglia(dimensione);
@@ -147,10 +147,10 @@ function onClick() {
     // mi salvo il numero della cella da DATASET
     const numeroCella = parseInt(this.dataset.numero);
     console.log(numeroCella);
-    console.log(bombePosition.includes(numeroCella)); // darà un valore booleano
+    console.log(posizioneBombe.includes(numeroCella)); // darà un valore booleano
 
     // creo variabile per applicare classe default
-    let className = 'succes'
+    let className = 'success'
     // condizione, se la posizione della bomba corrisponde alla mia cella cliccata, 
     // aggiungiamo una classe diversa
     if (bombePosition.includes(numeroCella)) {
