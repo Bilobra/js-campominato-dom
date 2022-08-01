@@ -9,6 +9,9 @@ const gridElement = document.querySelector('.grid');
 // estrapolo la SELECT della difficoltà
 const selectElement = document.querySelector('select[name="difficolta"]');
 
+// estrapolo RISULTATO
+const risultatoFinale = document.querySelector('.risultato');
+
 // --------------------
 
 // lego la mia funzione che avvia il gioco, ad un eventListener sul pulsante play
@@ -17,6 +20,8 @@ playButtonElement.addEventListener('click', startGame)
 // -----------------
 // creo un ARRAY VUOTO da utilizzare per generare le mie 'bombe'
 let posizioneBombe = [];
+// creo variabile per inizializzare punteggio
+let punteggio = 0;
 
 
 // FUNZIONI
@@ -104,6 +109,9 @@ function startGame() {
 function resetGame() {
     // svuoto la griglia dal suo contenuto
     gridElement.innerHTML = '';
+    // svuoto il punteggio
+    punteggio = 0;
+    risultatoFinale.innerHTML = '';
 }
 
 // -------------------
@@ -125,9 +133,9 @@ function generaBombe(max) {
             bombe.push(n);
         }
 
-        // ritorna il risultato da usare
-        
+
     }
+    // ritorna il risultato da usare
     return bombe;
 
 } //------------> devo crearmi o "cercare online" la funzione che genera
@@ -157,7 +165,18 @@ function onClick() {
     // aggiungiamo una classe diversa
     if (posizioneBombe.includes(numeroCella)) {
         className = 'danger';
+        gameOver();
+    } else {
+        punteggio++
     }
 
     this.classList.add(className);
+}
+
+// --------------
+
+// creo la funzione per generare i punti 
+function gameOver() {
+    risultatoFinale.innerHTML = ` punteggio finale : ${punteggio}`;
+    
 }
