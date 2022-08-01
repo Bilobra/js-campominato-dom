@@ -35,7 +35,10 @@ function creaCella() {
     el.classList.add('cella');
     // aggancio l'event che riconosce la posizione della bomba
     el.addEventListener('click', onClick);
+
+
     // ritorna elemento creato
+
     return el
 }
 // -------------------------------------------
@@ -166,8 +169,11 @@ function onClick() {
     if (posizioneBombe.includes(numeroCella)) {
         className = 'danger';
         gameOver();
+
+
     } else {
         punteggio++
+
     }
 
     this.classList.add(className);
@@ -178,5 +184,5 @@ function onClick() {
 // creo la funzione per generare i punti 
 function gameOver() {
     risultatoFinale.innerHTML = ` punteggio finale : ${punteggio}`;
-    
+
 }
