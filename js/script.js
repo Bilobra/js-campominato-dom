@@ -28,6 +28,8 @@ function creaCella() {
     const el = document.createElement('div');
     // aggiunge la classe cella
     el.classList.add('cella');
+    // aggancio l'event che riconosce la posizione della bomba
+    el.addEventListener('click', onClick);
     // ritorna elemento creato
     return el
 }
@@ -72,7 +74,7 @@ function calcolaDimensioneGriglia(difficolta) {
 // ---------------------------------
 
 // creo funzione per AVVIARE il gioco 
-function startGame(){
+function startGame() {
 
     // per resettare la mia griglia ad ogni nuova partita 
     resetGame();
@@ -82,7 +84,13 @@ function startGame(){
     console.log(difficoltaSelected);
 
     // calcolo dimensione griglia in base alla value della select 
-    let dimensione= calcolaDimensioneGriglia(difficoltaSelected);
+    let dimensione = calcolaDimensioneGriglia(difficoltaSelected);
+
+    // dopo che ho calcolato la dimensione della mia griglia con la funzione
+    // genero bombe e la loro posizione
+
+    bombePosition = generaBombe(dimensione ** 2);
+    console.log(bombePosition);
 
     // creo la griglia in base alla dimensione calcolata dalla select 
     creaGriglia(dimensione);
@@ -93,7 +101,7 @@ function startGame(){
 // ----------------------------------
 
 // creo funzione per RESETTARE la mia partita
-function resetGame(){
+function resetGame() {
     // svuoto la griglia dal suo contenuto
     gridElement.innerHTML = '';
 }
@@ -103,17 +111,17 @@ function resetGame(){
 // creo la funzione per generare le bombe con una funzione random 
 // che mi generi un array 
 
-function generaBombe(max){
+function generaBombe(max) {
     // genero 16 numeri non duplicati tra 1 e max
     // mi creo array da ritornare
-    const bombe= [];
+    const bombe = [];
     // creo un ciclo di numeri random
-    while(bombe.lenght < 16){
+    while (bombe.lenght < 16) {
         // genero un numero casuale con la funzione RandomINT ( vedi sotto)
         const n = getRandomIntInclusive(1, max)
         // se n non è presente nell'array : allora pusho 
         // usando la proprietà includes degli array
-        if(!bombe.includes(n)){
+        if (!bombe.includes(n)) {
             bombe.push(n);
         }
 
@@ -121,11 +129,33 @@ function generaBombe(max){
         return bombe;
     }
 } //------------> devo crearmi o "cercare online" la funzione che genera
-    // numeri interi random --->
+// numeri interi random --->
 
-    function getRandomIntInclusive(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min + 1) + min);
-    
+function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min);
+
+}
+
+// ------------------
+
+// creo la funzione che in base alla posizione della bomba, attribuisce una classe
+// al click di quest' ultima
+
+function onClick() {
+    // mi salvo il numero della cella da DATASET
+    const numeroCella = parseInt(this.dataset.numero);
+    console.log(numeroCella);
+    console.log(bombePosition.includes(numeroCella)); // darà un valore booleano
+
+    // creo variabile per applicare classe default
+    let className = 'succes'
+    // condizione, se la posizione della bomba corrisponde alla mia cella cliccata, 
+    // aggiungiamo una classe diversa
+    if (bombePosition.includes(numeroCella)) {
+        className = 'danger';
     }
+
+    this.classList.add(className);
+}
