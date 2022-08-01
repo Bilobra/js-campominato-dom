@@ -57,3 +57,19 @@ function calcolaDimensioneGriglia(difficolta) {
 
     return dimensione;
 }
+
+// creo funzione per avviare il gioco 
+function startGame(){
+    // in base al valore della select :
+    const difficoltaSelected = selectElement.value;
+    console.log(difficoltaSelected);
+
+    // calcolo dimensione griglia in base alla value della select 
+    let dimensione= calcolaDimensioneGriglia(difficoltaSelected);
+
+    // creo la griglia in base alla dimensione calcolata dalla select 
+    creaGriglia(dimensione);
+
+
+    // LEGO LA MIA FUNZIONE AL BOTTONE PLAY, CON EVENT LISTENER CLICK
+}
