@@ -126,9 +126,10 @@ function generaBombe(max) {
         }
 
         // ritorna il risultato da usare
-        return bombe;
         
     }
+    return bombe;
+
 } //------------> devo crearmi o "cercare online" la funzione che genera
 // numeri interi random --->
 
