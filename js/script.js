@@ -9,6 +9,12 @@ const gridElement = document.querySelector('.grid');
 // estrapolo la SELECT della difficoltà
 const selectElement = document.querySelector('select[name="difficolta"]');
 
+// --------------------
+
+// lego la mia funzione che avvia il gioco, ad un eventListener sul pulsante play
+playButtonElement.addEventListener('click', startGame)
+// senza parentesi!
+
 
 // FUNZIONI
 // -------------------------------------------
@@ -39,8 +45,8 @@ function creaGriglia(dimensioneGriglia) {
         gridElement.append(cella);
     }
 }
-
-// creo funzione che mi genera la griglia in base alla difficoltà
+// ------------------------------------
+// creo funzione che mi genera la griglia in base alla DIFFICOLTA'
 
 function calcolaDimensioneGriglia(difficolta) {
     // variabile che mi indica la dimensione di default
@@ -57,9 +63,13 @@ function calcolaDimensioneGriglia(difficolta) {
 
     return dimensione;
 }
-
-// creo funzione per avviare il gioco 
+// ---------------------------------
+// creo funzione per AVVIARE il gioco 
 function startGame(){
+
+    // per resettare la mia griglia ad ogni nuova partita 
+    resetGame();
+
     // in base al valore della select :
     const difficoltaSelected = selectElement.value;
     console.log(difficoltaSelected);
@@ -72,4 +82,10 @@ function startGame(){
 
 
     // LEGO LA MIA FUNZIONE AL BOTTONE PLAY, CON EVENT LISTENER CLICK
+}
+// ----------------------------------
+// creo funzione per RESETTARE la mia partita
+function resetGame(){
+    // svuoto la griglia dal suo contenuto
+    gridElement.innerHTML = '';
 }
