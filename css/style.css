@@ -1,0 +1,79 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+/* ROW */
+.row{
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.main-header .row{
+    justify-content:space-between ;
+}
+
+/* body */
+body {
+    background-color: aquamarine;
+}
+
+/* header */
+header {
+    background-color: white;
+    padding: 20px 0;
+}
+
+button {
+    border: none;
+}
+
+.play-button {
+    border-radius: 3px;
+    background-color: #cdcdcd;
+    min-width: 80px;
+    line-height: 30px;
+    text-align: center;
+}
+
+/* main */
+main {
+    padding: 50px 0;
+}
+
+/* container */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+
+}
+
+/* griglia */
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+}
+
+/* cella */
+.cella {
+    border: 2px solid black;
+    aspect-ratio: 1/1;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.cella.danger{
+    background-color: tomato;
+    color: white;
+}
+.cella.success{
+    background-color: greenyellow;
+    color: white;
+}
