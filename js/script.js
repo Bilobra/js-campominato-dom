@@ -15,9 +15,13 @@ const selectElement = document.querySelector('select[name="difficolta"]');
 playButtonElement.addEventListener('click', startGame)
 // senza parentesi!
 
+// -----------------
+// creo un ARRAY VUOTO da utilizzare per generare le mie 'bombe'
+let bombePosition = [];
 
 // FUNZIONI
 // -------------------------------------------
+
 // creo funzione che genera la CELLA
 function creaCella() {
     // crea l'elemento
@@ -28,6 +32,7 @@ function creaCella() {
     return el
 }
 // -------------------------------------------
+
 // creo funzione che genera GRIGLIA
 
 function creaGriglia(dimensioneGriglia) {
@@ -46,6 +51,7 @@ function creaGriglia(dimensioneGriglia) {
     }
 }
 // ------------------------------------
+
 // creo funzione che mi genera la griglia in base alla DIFFICOLTA'
 
 function calcolaDimensioneGriglia(difficolta) {
@@ -64,6 +70,7 @@ function calcolaDimensioneGriglia(difficolta) {
     return dimensione;
 }
 // ---------------------------------
+
 // creo funzione per AVVIARE il gioco 
 function startGame(){
 
@@ -84,8 +91,41 @@ function startGame(){
     // LEGO LA MIA FUNZIONE AL BOTTONE PLAY, CON EVENT LISTENER CLICK
 }
 // ----------------------------------
+
 // creo funzione per RESETTARE la mia partita
 function resetGame(){
     // svuoto la griglia dal suo contenuto
     gridElement.innerHTML = '';
 }
+
+// -------------------
+
+// creo la funzione per generare le bombe con una funzione random 
+// che mi generi un array 
+
+function generaBombe(max){
+    // genero 16 numeri non duplicati tra 1 e max
+    // mi creo array da ritornare
+    const bombe= [];
+    // creo un ciclo di numeri random
+    while(bombe.lenght < 16){
+        // genero un numero casuale con la funzione RandomINT ( vedi sotto)
+        const n = getRandomIntInclusive(1, max)
+        // se n non è presente nell'array : allora pusho 
+        // usando la proprietà includes degli array
+        if(!bombe.includes(n)){
+            bombe.push(n);
+        }
+
+        // ritorna il risultato da usare
+        return bombe;
+    }
+} //------------> devo crearmi o "cercare online" la funzione che genera
+    // numeri interi random --->
+
+    function getRandomIntInclusive(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    
+    }
