@@ -14,10 +14,10 @@ const selectElement = document.querySelector('select[name="difficolta"]');
 // lego la mia funzione che avvia il gioco, ad un eventListener sul pulsante play
 playButtonElement.addEventListener('click', startGame)
 // senza parentesi!
-
 // -----------------
 // creo un ARRAY VUOTO da utilizzare per generare le mie 'bombe'
 let posizioneBombe = [];
+
 
 // FUNZIONI
 // -------------------------------------------
@@ -116,7 +116,7 @@ function generaBombe(max) {
     // mi creo array da ritornare
     const bombe = [];
     // creo un ciclo di numeri random
-    while (bombe.lenght < 16) {
+    while (bombe.length < 16) {
         // genero un numero casuale con la funzione RandomINT ( vedi sotto)
         const n = getRandomIntInclusive(1, max)
         // se n non è presente nell'array : allora pusho 
@@ -127,6 +127,7 @@ function generaBombe(max) {
 
         // ritorna il risultato da usare
         return bombe;
+        
     }
 } //------------> devo crearmi o "cercare online" la funzione che genera
 // numeri interi random --->
@@ -153,7 +154,7 @@ function onClick() {
     let className = 'success'
     // condizione, se la posizione della bomba corrisponde alla mia cella cliccata, 
     // aggiungiamo una classe diversa
-    if (bombePosition.includes(numeroCella)) {
+    if (posizioneBombe.includes(numeroCella)) {
         className = 'danger';
     }
 
